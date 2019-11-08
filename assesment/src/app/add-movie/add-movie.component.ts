@@ -7,7 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./add-movie.component.css']
 })
 export class AddMovieComponent implements OnInit {
-  get movies() {
+  get movie() {
     return this.form.get('movie');
   }
   get title() {

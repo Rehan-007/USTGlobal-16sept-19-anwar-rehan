@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var todayDate = new Date();
+        var days=['sun','mon','tue','wed','thur','friday','sat']
+        var months=['jan','feb','mar','april','may','june','july','aug','sept','oct','nov','dec']
+        var d= todayDate.getDay();
+        var m=todayDate.getMonth();
+        var i,j;
+        for (i = 0 ;i<= days.length;i++)
+        {
+            if(d == i)
+            console.log('day = ', days[i])
+        }
+        for( j=0 ; j<=months.length ; j++)
+        {
+            if(m == j)
+            console.log('month = ', months[j])
+        }
+    </script>
+</body>
+</html>

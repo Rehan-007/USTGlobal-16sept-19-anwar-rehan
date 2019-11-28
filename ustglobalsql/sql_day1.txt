@@ -1,0 +1,226 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 5.7.27-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> sdvgwfrhsg;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sdvgwfrhsg' at line 2
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| ustsql             |
+| world              |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> create database db_ust;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| db_ust             |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| ustsql             |
+| world              |
++--------------------+
+8 rows in set (0.00 sec)
+/////////
+mysql> use db_ust;
+Database changed
+mysql> desc product;
++----------+-----------+------+-----+---------+-------+
+| Field    | Type      | Null | Key | Default | Extra |
++----------+-----------+------+-----+---------+-------+
+| Pid      | int(11)   | YES  |     | NULL    |       |
+| Pname    | char(120) | YES  |     | NULL    |       |
+| Quantity | int(11)   | YES  |     | NULL    |       |
++----------+-----------+------+-----+---------+-------+
+3 rows in set (0.11 sec)
+////////////////////////////////
+mysql> show tables;
++------------------+
+| Tables_in_db_ust |
++------------------+
+| product          |
++------------------+
+/////////////////////
+to add new column in table==>///
+ alter table product add column Price int;
+///
+==> to change the column name==>
+alter table product change column price amount int;
+
+//
+
+to drop the column ==>
+alter table product drop column amount;
+-------------------------------------------------------------------
+to rename the table==>
+syntax => rename table oldTable_name to new_table;
+command =>rename table product to product_info;
+--------------------------------------------------------------------
+--to rename database--
+  not Possible
+--------------------------------------------------------------------
+DATA MANUPULATION LANGUAGE 
+==>INSERT into table_name (column_name,column_name2.....)(values1,values2.....);
+==>command==>insert into product_info (Pid,Pname,quantity) values(1,'mobile',2);
+insert product values(2,'car',4);
+==> for multiple insertion of dats==>
+insert into product (Pid,Pname,quantity) values(5,'Ship',5),(6,'beer',6);
+
+-------
+ 
+UPDATE==>
+----------
+SYSNTAX=> update table_name set column=value;
+ eg:- update product set quantity =100 where Pname='pen';
+--------
+DELETE ==>
+-----------
+SYSNTAX==> delete from table_name;
+eg:-delete from product;
+
+------------------
+DQL==
+select==> select column_name from table_name;
+=====================================================
+DISTINCT==>
+---------------
+select distinct col1,col2.... from table_name;
+select distinct designation,deptNo from employee;
++--------------+--------+
+| designation  | deptNo |
++--------------+--------+
+| developer    |     10 |
+| testing      |     20 |
+| hr           |     20 |
+| tech_support |     30 |
+| manager      |     40 |
+| clerk        |     40 |
+| developer    |     50 |
+| testing      |     10 |
++--------------+--------+
+===============================
+Alias==>
+column syntax-- select column_name AS alias_name from table_name;
+table syntax-- select 
+===============================
+WHERE CLause----
+-- select * from table_name
+   where conditions;
+
+==>waq to display annual sallary=>
+==
+ select salary*12 annualsal from employee;
++-----------+
+| annualsal |
++-----------+
+|     26400 |
+|     27600 |
+|     15600 |
+|     63600 |
+|     24000 |
+|     72000 |
+|     36000 |
+|     84000 |
+|     48000 |
++-----------+
+Q) WAQ to display the result from emp table whose job designation is developer?
+ select * from employee
+    -> where designation ='developer';
++-----+---------+----------+------------+------+------------+------------+--------+--------+-------------------+--------+-------------+
+| eid | name    | mobileNo | dob        | age  | doj        | bloodGroup | deptNo | salary | email             | gender | designation |
++-----+---------+----------+------------+------+------------+------------+--------+--------+-------------------+--------+-------------+
+|   1 | rehan   | 76810823 | 1998-09-28 |   21 | 2002-05-05 | a+         |     10 |   2200 | rehan@gmail.com   | male   | developer   |
+|   7 | swadhin | 23657893 | 1998-02-28 |   22 | 2006-05-13 | ab+        |     50 |   6000 | swadhin@gmail.com | male   | developer   |
++-----+---------+----------+------------+------+------------+------------+--------+--------+-------------------+--------+-------------+
+Q)WAQ to display all the record of employee excluding who is working on deptNo=20?
+       select * from employee
+    -> where deptNo<>20;
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+| eid | name    | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email             | gender | designation  |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+|   1 | rehan   |  76810823 | 1998-09-28 |   21 | 2002-05-05 | a+         |     10 |   2200 | rehan@gmail.com   | male   | developer    |
+|   4 | poirei  |  35859877 | 1997-08-19 |   24 | 2004-05-10 | b+         |     30 |   1300 | poirei@gmail.com  | male   | tech_support |
+|   5 | anwar   | 977651142 | 1996-08-19 |   26 | 2005-05-10 | b+         |     40 |   5300 | anwar@gmail.com   | male   | manager      |
+|   6 | swati   |  79564787 | 1998-02-28 |   25 | 2006-05-13 | o+         |     40 |   2000 | swati@gmail.com   | female | clerk        |
+|   7 | swadhin |  23657893 | 1998-02-28 |   22 | 2006-05-13 | ab+        |     50 |   6000 | swadhin@gmail.com | male   | developer    |
+|   8 | prachi  | 213457689 | 1995-12-16 |   32 | 2006-01-13 | b+         |     10 |   3000 | prachi@gmail.com  | female | testing      |
+|  10 | rishali | 582784582 | 1995-10-10 |   19 | 2013-09-10 | b+         |     30 |   4000 | rishali@gmail.com | female | tech_support |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+
+Q)WAQ to display the record of employee whose sal is greater then 2000?
+      select * from employee
+    -> where salary>2000;
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+| eid | name    | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email             | gender | designation  |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+|   1 | rehan   |  76810823 | 1998-09-28 |   21 | 2002-05-05 | a+         |     10 |   2200 | rehan@gmail.com   | male   | developer    |
+|   2 | priya   | 687457677 | 1997-09-18 |   23 | 2003-05-08 | a+         |     20 |   2300 | priya@gmail.com   | female | testing      |
+|   5 | anwar   | 977651142 | 1996-08-19 |   26 | 2005-05-10 | b+         |     40 |   5300 | anwar@gmail.com   | male   | manager      |
+|   7 | swadhin |  23657893 | 1998-02-28 |   22 | 2006-05-13 | ab+        |     50 |   6000 | swadhin@gmail.com | male   | developer    |
+|   8 | prachi  | 213457689 | 1995-12-16 |   32 | 2006-01-13 | b+         |     10 |   3000 | prachi@gmail.com  | female | testing      |
+|   9 | bonty   | 114886389 | 1995-11-14 |   29 | 2013-04-01 | a+         |     20 |   7000 | bonty@gmail.com   | male   | hr           |
+|  10 | rishali | 582784582 | 1995-10-10 |   19 | 2013-09-10 | b+         |     30 |   4000 | rishali@gmail.com | female | tech_support |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+Q) WAQ to list employee whose age is less then 26?
+ select * from employee
+    -> where age<26;
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+| eid | name    | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email             | gender | designation  |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+|   1 | rehan   |  76810823 | 1998-09-28 |   21 | 2002-05-05 | a+         |     10 |   2200 | rehan@gmail.com   | male   | developer    |
+|   2 | priya   | 687457677 | 1997-09-18 |   23 | 2003-05-08 | a+         |     20 |   2300 | priya@gmail.com   | female | testing      |
+|   4 | poirei  |  35859877 | 1997-08-19 |   24 | 2004-05-10 | b+         |     30 |   1300 | poirei@gmail.com  | male   | tech_support |
+|   6 | swati   |  79564787 | 1998-02-28 |   25 | 2006-05-13 | o+         |     40 |   2000 | swati@gmail.com   | female | clerk        |
+|   7 | swadhin |  23657893 | 1998-02-28 |   22 | 2006-05-13 | ab+        |     50 |   6000 | swadhin@gmail.com | male   | developer    |
+|  10 | rishali | 582784582 | 1995-10-10 |   19 | 2013-09-10 | b+         |     30 |   4000 | rishali@gmail.com | female | tech_support |
+
+Q)WAQ display name,sal,email,mobileNo, whose age is 18 or greater then 18?
+    select name,salary,email,mobileNo from employee
+    -> where age <=28;
++---------+--------+-------------------+-----------+
+| name    | salary | email             | mobileNo  |
++---------+--------+-------------------+-----------+
+| rehan   |   2200 | rehan@gmail.com   |  76810823 |
+| priya   |   2300 | priya@gmail.com   | 687457677 |
+| poirei  |   1300 | poirei@gmail.com  |  35859877 |
+| anwar   |   5300 | anwar@gmail.com   | 977651142 |
+| swati   |   2000 | swati@gmail.com   |  79564787 |
+| swadhin |   6000 | swadhin@gmail.com |  23657893 |
+| rishali |   4000 | rishali@gmail.com | 582784582 |
++---------+--------+-------------------+-----------+
+Q) WAQ to display details salary less then equals 2000?
+   select * from employee
+    -> where salary<=2000;
++-----+--------+----------+------------+------+------------+------------+--------+--------+------------------+--------+--------------+
+| eid | name   | mobileNo | dob        | age  | doj        | bloodGroup | deptNo | salary | email            | gender | designation  |
++-----+--------+----------+------------+------+------------+------------+--------+--------+------------------+--------+--------------+
+|   4 | poirei | 35859877 | 1997-08-19 |   24 | 2004-05-10 | b+         |     30 |   1300 | poirei@gmail.com | male   | tech_support |
+|   6 | swati  | 79564787 | 1998-02-28 |   25 | 2006-05-13 | o+         |     40 |   2000 | swati@gmail.com  | female | clerk        |
++-----+--------+----------+------------+------+------------+------------+--------+--------+------------------+--------+--------------+
+
+
+Q) WAQ to display 

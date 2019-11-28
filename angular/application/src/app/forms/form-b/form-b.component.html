@@ -1,0 +1,55 @@
+<form action="" class="col-md-4 offset-4 mt-5 card card-body mb-5">
+    <h1 class="text-center bg-dark text-white">Candidate Form</h1>
+    <div class="form-group">
+        <input type="text" name="CName" id="CName" class="form-control" placeholder="Enter Candidate Name...." #cname = "ngModel" ngModel required>
+        <div *ngIf = "cname.touched && cname.invalid">
+          <p *ngIf="cname.errors.required">Requird Field</p>
+      </div>
+    </div>
+    <div class="form-control">
+        <input type="text" name="Years" id="Years" class="form-group" placeholder="Enter year of study" #Years="ngModel" ngModel required>
+        <div *ngIf = "Years.touched && Years.invalid">
+          <p *ngIf="Years.errors.required">Requird Field</p>
+      </div>
+    </div>
+    <h4 class="float-left bg-dark text-white mt-2">Skills</h4>
+    <div class="form-group">
+            <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox1">Java</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">Angular</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                    <label class="form-check-label" for="inlineCheckbox3">SQL</label>
+                </div>
+                <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                        <label class="form-check-label" for="inlineCheckbox2">Spring</label>
+                 </div>
+                 <div class="form-group">
+                        <input type="text" name="CCTC" id="CCTC" class="form-control" placeholder="Enter CCTC....." #CCTC="ngModel" ngModel required>
+                        <div *ngIf = "CCTC.touched && CCTC.invalid">
+                          <p *ngIf="CCTC.errors.required">Requird Field</p>
+                      </div>
+                 </div>
+                 <div class="form-group">
+                        <input type="text" name="ECTC" id="ECTC" class="form-control" placeholder="Enter ECTC...." #ECTC="ngModel" ngModel required>
+                        <div *ngIf = "ECTC.touched && ECTC.invalid">
+                          <p *ngIf="ECTC.errors.required">Requird Field</p>
+                        </div>
+                 </div>
+                 <div class="form-group">
+                        <input type="text" name="Relocate" id="Relocate" class="form-control" placeholder="Ready to relocate...." #Relocate ="ngModel" ngModel required>
+                        <div *ngIf = "Relocate.touched && Relocate.invalid">
+                          <p *ngIf="Relocate.errors.required">Requird Field</p>
+                      </div>
+                 </div>
+    </div>
+    <div class="form-group">
+            <button type="submit" class="btn btn-outline-success float-right">Schedule Interview</button>
+    </div>
+</form>

@@ -1,0 +1,121 @@
+<form action="" class="col-md-4 offset-4 mt-5 card card-body mb-5 bg-dark shadow" #form="ngForm" (ngSubmit)="addData(form)">
+    <h1 class="text-center bg-dark text-white">Company Forms</h1>
+    <div class="form-group">
+        <input type="text" name="cname" id="cname" class="form-control" placeholder="Enter Company Name" #cname="ngModel" ngModel required>
+        <div *ngIf = "cname.touched && cname.invalid">
+            <p *ngIf="cname.errors.required">Requird Field</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" name="Skills" id="Skills" class="form-control" placeholder="Enter Skills" #Skills="ngModel" ngModel required>
+        <div *ngIf = "Skills.touched && Skills.invalid">
+                <p *ngIf="Skills.errors.required">Requird Field</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" name="Yearsofexperience" id="Yearsofexperience" class="form-control" placeholder="Enter YearsofExperience" #Yearsofexperience="ngModel" ngModel required>
+        <div *ngIf = "Yearsofexperience.touched && Yearsofexperience.invalid">
+                <p *ngIf="Yearsofexperience.errors.required">Requird Field</p>
+         </div>
+    </div>
+    <div class="form-group">
+        <input type="text" name="MCTC" id="MCTC" class="form-control" placeholder="Enter MCTC" #MCTC="ngModel" ngModel required>
+        <div *ngIf = "MCTC.touched && MCTC.invalid">
+                <p *ngIf="MCTC.errors.required">Requird Field</p>
+            </div>
+    </div>
+    <div class="form-group">
+        <input type="text" name="Location" id="Location" class="form-control" placeholder="Enter Location" #Location="ngModel" ngModel required>
+        <div *ngIf = "Location.touched && Location.invalid">
+                <p *ngIf="Location.errors.required">Requird Field</p>
+        </div>
+    </div>
+    <div class="form-group">
+       <button type="submit" class="btn btn-outline-success float-right" [disabled]="form.invalid">Add Requirments</button>
+    </div>
+</form>
+
+<table class="table table-border table-striped table-dark col-md-8 offset-2">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Cname</th>
+            <th>Skills</th>
+            <th>Edit</th>
+            <!-- <th>Cname</th>
+            <th>Skills</th>
+            <th>Cname</th> -->
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor ="let user of Users" >
+            <td >{{user.id}}</td>
+            <td >{{user.cname | uppercase}}</td>
+            <td >{{user.Skills}}</td>
+            <td>{{today}}</td>
+            <td>
+               <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="selectUser(user)">
+    Edit
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" *ngIf="selectedUser">
+            <form action="" class="" #form="ngForm" (ngSubmit)="updateData(form)">
+                <h1 class="text-center bg-dark text-white">Company Forms</h1>
+                <div class="form-group">
+                    <input type="text" name="cname" id="cname" class="form-control" placeholder="Enter Company Name" #cname="ngModel" ngModel required [(ngModel)]="selectedUser.cname">
+                    <div *ngIf = "cname.touched && cname.invalid">
+                        <p *ngIf="cname.errors.required">Requird Field</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="Skills" id="Skills" class="form-control" placeholder="Enter Skills" #Skills="ngModel" ngModel required [(ngModel)]="selectedUser.Skills">
+                    <div *ngIf = "Skills.touched && Skills.invalid">
+                            <p *ngIf="Skills.errors.required">Requird Field</p>
+                        </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="Yearsofexperience" id="Yearsofexperience" class="form-control" placeholder="Enter YearsofExperience" #Yearsofexperience="ngModel" ngModel required [(ngModel)]="selectedUser.Yearsofexperience">
+                    <div *ngIf = "Yearsofexperience.touched && Yearsofexperience.invalid">
+                            <p *ngIf="Yearsofexperience.errors.required">Requird Field</p>
+                        </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="MCTC" id="MCTC" class="form-control" placeholder="Enter MCTC" #MCTC="ngModel" ngModel required [(ngModel)]="selectedUser.MCTC">
+                    <div *ngIf = "MCTC.touched && MCTC.invalid">
+                            <p *ngIf="MCTC.errors.required">Requird Field</p>
+                        </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="Location" id="Location" class="form-control" placeholder="Enter Location" #Location="ngModel" ngModel required [(ngModel)]="selectedUser.Location">
+                    <div *ngIf = "Location.touched && Location.invalid">
+                            <p *ngIf="Location.errors.required">Requird Field</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                   <button type="submit" class="btn btn-outline-success float-right" [disabled]="form.invalid">Update</button>
+                </div>
+            </form>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+            </td>
+            <td>
+                <button (click)="deleteData(user)" type="button" class="btn btn-outline-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

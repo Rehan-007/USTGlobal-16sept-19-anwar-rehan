@@ -1,0 +1,39 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    margin-top: 200px;
+}
+.leftSection{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    animation-name: leftSection;
+    animation-fill-mode: both;
+}
+.rightSection{
+    flex: 1;
+    transition: 1s;
+    background-image: url(image/india-2196012_960_720.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100px;
+    width: 50px;
+}
+.header > h1{
+    margin: 0;
+    color: green;
+}
+.header > h4{
+    margin: 10px;
+    color: chartreuse;
+    font-size: 15px;
+    font-weight: normal;
+}

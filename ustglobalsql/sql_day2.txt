@@ -1,0 +1,363 @@
+Q)WAQ to display all the employee details who is working in deptNo 20 as  well as sal is greater than 3000?
+Ans:-
+ select * from employee  
+ where deptNo=20 and salary>3000;
++-----+-------+-----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+| eid | name  | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email           | gender | designation |
++-----+-------+-----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+|   9 | bonty | 114886389 | 1995-11-14 |   29 | 2013-04-01 | a+         |     20 |   7000 | bonty@gmail.com | male   | hr          |
++-----+-------+-----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+Q)WAQ to display name,sal from the employee table who is working in deptNo 10,20?
+Ans:-
+ select name,salary from employee
+    -> where deptNo in (10,20);
++--------+--------+
+| name   | salary |
++--------+--------+
+| rehan  |   2200 |
+| priya  |   2300 |
+| prachi |   3000 |
+| bonty  |   7000 |
++
+Q)WAQ to display employee details whose job designation is tester and age =23?
+ans:-
+ select * from employee
+    -> where designation='testing' and age=23;
++-----+-------+-----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+| eid | name  | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email           | gender | designation |
++-----+-------+-----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+|   2 | priya | 687457677 | 1997-09-18 |   23 | 2003-05-08 | a+         |     20 |   2300 | priya@gmail.com | female | testing     |
++-----+-------+-----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+1 row in set (0.00 sec)
+Q) WAQ to display all the record of the employee who is working as tester or having salary more than 2000?
+Ans:-
+
+Q) WAQ to display name,sal,age from employee table who is working in deptNo 10,40,50?
+Ans:-
+select name,salary,age from employee
+    -> where deptNo in(10,40,50);
++---------+--------+------+
+| name    | salary | age  |
++---------+--------+------+
+| rehan   |   2200 |   21 |
+| anwar   |   5300 |   26 |
+| swati   |   2000 |   25 |
+| swadhin |   6000 |   22 |
+| prachi  |   3000 |   32 |
++---------+--------+------+
+5 rows in set (0.00 sec)
+Q) WAQ to display employee details whose age is more than 25 and bloodGroup is b+?
+Ans:-
+select * from employee
+    -> where age > 25 and bloodGroup='b+';
++-----+--------+-----------+------------+------+------------+------------+--------+--------+------------------+--------+-------------+
+| eid | name   | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email            | gender | designation |
++-----+--------+-----------+------------+------+------------+------------+--------+--------+------------------+--------+-------------+
+|   5 | anwar  | 977651142 | 1996-08-19 |   26 | 2005-05-10 | b+         |     40 |   5300 | anwar@gmail.com  | male   | manager     |
+|   8 | prachi | 213457689 | 1995-12-16 |   32 | 2006-01-13 | b+         |     10 |   3000 | prachi@gmail.com | female | testing     |
++-----+--------+-----------+------------+------+------------+------------+--------+--------+------------------+--------+-------------+
+2 rows in set (0.00 sec)
+========
+NOT=
+Q)WAQ to display all the records of employee excluding tester?
+Ans:-
+select * from employee
+  -> where not designation='testing';
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+| eid | name    | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email             | gender | designation  |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+|   1 | rehan   |  76810823 | 1998-09-28 |   21 | 2002-05-05 | a+         |     10 |   2200 | rehan@gmail.com   | male   | developer    |
+|   4 | poirei  |  35859877 | 1997-08-19 |   24 | 2004-05-10 | b+         |     30 |   1300 | poirei@gmail.com  | male   | tech_support |
+|   5 | anwar   | 977651142 | 1996-08-19 |   26 | 2005-05-10 | b+         |     40 |   5300 | anwar@gmail.com   | male   | manager      |
+|   6 | swati   |  79564787 | 1998-02-28 |   25 | 2006-05-13 | o+         |     40 |   2000 | swati@gmail.com   | female | clerk        |
+|   7 | swadhin |  23657893 | 1998-02-28 |   22 | 2006-05-13 | ab+        |     50 |   6000 | swadhin@gmail.com | male   | developer    |
+|   9 | bonty   | 114886389 | 1995-11-14 |   29 | 2013-04-01 | a+         |     20 |   7000 | bonty@gmail.com   | male   | hr           |
+|  10 | rishali | 582784582 | 1995-10-10 |   19 | 2013-09-10 | b+         |     30 |   4000 | rishali@gmail.com | female | tech_support |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+7 rows in set (0.03 sec)
+Q) WAQ to display name of all the employee who is working as HR or Tester and salary is greater than 3000?
+Ans:-select name from employee
+    -> where designation in('hr','testing') and salary>3000;
++-------+
+| name  |
++-------+
+| bonty |
++-------+
+Q) WAQ to display all the employee excluding software developer who are workig is deptNo 40?
+Ans:-
+select * from employee
+    -> where not designation ='developer' and deptNo=40;
++-----+-------+-----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+| eid | name  | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email           | gender | designation |
++-----+-------+-----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+|   5 | anwar | 977651142 | 1996-08-19 |   26 | 2005-05-10 | b+         |     40 |   5300 | anwar@gmail.com | male   | manager     |
+|   6 | swati |  79564787 | 1998-02-28 |   25 | 2006-05-13 | o+         |     40 |   2000 | swati@gmail.com | female | clerk       |
++-----+-------+-----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+2 rows in set (0.00 sec)
+===
+(order of execution of logical operator==first Not then And operator then OR operator;)
+Q)WAQ to display all the developer who are working for deptNo 10,40?
+Ans:-
+select * from employee
+    -> where designation='developer' and deptNo in(10,40);
++-----+-------+----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+| eid | name  | mobileNo | dob        | age  | doj        | bloodGroup | deptNo | salary | email           | gender | designation |
++-----+-------+----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+|   1 | rehan | 76810823 | 1998-09-28 |   21 | 2002-05-05 | a+         |     10 |   2200 | rehan@gmail.com | male   | developer   |
++-----+-------+----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+
+===================================SPECIAL OPERATORS=================
+IN->
+Syntax -> select * from table_name where column_name in (lis of values);
+------
+Q)WAQ to  display all the record of employee working in dept no 40,50,70,80?
+Ans:-
+select * from employee
+    -> where deptNo in(40,50,70,80);
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+-------------+
+| eid | name    | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email             | gender | designation |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+-------------+
+|   5 | anwar   | 977651142 | 1996-08-19 |   26 | 2005-05-10 | b+         |     40 |   5300 | anwar@gmail.com   | male   | manager     |
+|   6 | swati   |  79564787 | 1998-02-28 |   25 | 2006-05-13 | o+         |     40 |   2000 | swati@gmail.com   | female | clerk       |
+|   7 | swadhin |  23657893 | 1998-02-28 |   22 | 2006-05-13 | ab+        |     50 |   6000 | swadhin@gmail.com | male   | developer   |
++
+Q)WAQ to display name of all the employee who is working as tester,Hr,developer?
+Ans:-
+select name from employee
+    -> where designation in('testing','hr','developer');
++---------+
+| name    |
++---------+
+| rehan   |
+| priya   |
+| swadhin |
+| prachi  |
+| bonty   |
++---------+
+Q) WAQ to display the details of tester,clerk,developer who are working in deptNo 20,30 and sal is greater than 3000?
+Ans:-
+select * from employee
+    -> where designation in('testing','clerk','developer') and deptNo in(10,40) and salary>3000;
+------NOT IN------
+Syntax -> select * from table_name where column_name not in (lis of values);
+
+Q) WAQ to display all the record of employee excluding who is workin as tester,clerk,hr?
+Ans:-
+select * from employee
+    -> where designation not in('testing','clerk','hr');
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+| eid | name    | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email             | gender | designation  |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+|   1 | rehan   |  76810823 | 1998-09-28 |   21 | 2002-05-05 | a+         |     10 |   2200 | rehan@gmail.com   | male   | developer    |
+|   4 | poirei  |  35859877 | 1997-08-19 |   24 | 2004-05-10 | b+         |     30 |   1300 | poirei@gmail.com  | male   | tech_support |
+|   5 | anwar   | 977651142 | 1996-08-19 |   26 | 2005-05-10 | b+         |     40 |   5300 | anwar@gmail.com   | male   | manager      |
+|   7 | swadhin |  23657893 | 1998-02-28 |   22 | 2006-05-13 | ab+        |     50 |   6000 | swadhin@gmail.com | male   | developer    |
+|  10 | rishali | 582784582 | 1995-10-10 |   19 | 2013-09-10 | b+         |     30 |   4000 | rishali@gmail.com | female | tech_support |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+5 rows in set (0.00 sec)
+Q)WAQ to display all the record of employee whose age is 20,25,30,32 exlude all the details of tester and software developer?
+Ans:-
+select * from employee
+    -> where age in(20,25,32) and designation not in('testing','developer');
++-----+-------+----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+| eid | name  | mobileNo | dob        | age  | doj        | bloodGroup | deptNo | salary | email           | gender | designation |
++-----+-------+----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+|   6 | swati | 79564787 | 1998-02-28 |   25 | 2006-05-13 | o+         |     40 |   2000 | swati@gmail.com | female | clerk       |
++-----+-------+----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+1 row in set (0.00 sec)
+
+===========BETWEEN OPERATOR=======================
+
+synatax-> select * from Table_name where column_name BETWEEN values1 and Values2
+
+Q)WAQ to display all the details of employee whose age is between 20 to 30?
+Ans:-
+select * from employee
+    -> where age between 20 and 30;
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+| eid | name    | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email             | gender | designation  |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+|   1 | rehan   |  76810823 | 1998-09-28 |   21 | 2002-05-05 | a+         |     10 |   2200 | rehan@gmail.com   | male   | developer    |
+|   2 | priya   | 687457677 | 1997-09-18 |   23 | 2003-05-08 | a+         |     20 |   2300 | priya@gmail.com   | female | testing      |
+|   4 | poirei  |  35859877 | 1997-08-19 |   24 | 2004-05-10 | b+         |     30 |   1300 | poirei@gmail.com  | male   | tech_support |
+|   5 | anwar   | 977651142 | 1996-08-19 |   26 | 2005-05-10 | b+         |     40 |   5300 | anwar@gmail.com   | male   | manager      |
+|   6 | swati   |  79564787 | 1998-02-28 |   25 | 2006-05-13 | o+         |     40 |   2000 | swati@gmail.com   | female | clerk        |
+|   7 | swadhin |  23657893 | 1998-02-28 |   22 | 2006-05-13 | ab+        |     50 |   6000 | swadhin@gmail.com | male   | developer    |
+|   9 | bonty   | 114886389 | 1995-11-14 |   29 | 2013-04-01 | a+         |     20 |   7000 | bonty@gmail.com   | male   | hr           |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+7 rows in set (0.02 sec)
+Q)WAQ to display all the details of employee hired during 2013?
+Ans:-
+select * from employee
+    -> where doj between '2013-01-01' and '2013-12-31';
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+| eid | name    | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email             | gender | designation  |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+|   9 | bonty   | 114886389 | 1995-11-14 |   29 | 2013-04-01 | a+         |     20 |   7000 | bonty@gmail.com   | male   | hr           |
+|  10 | rishali | 582784582 | 1995-10-10 |   19 | 2013-09-10 | b+         |     30 |   4000 | rishali@gmail.com | female | tech_support |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+2 rows in set (0.02 sec)
+=========== NOT BETWEEN OPERATOR=======================
+Q)WAQ to display all the record of employee excluding whose sal is in the range of 2000 to 3000?
+Ans:-
+select * from employee
+-> where salary not between 2000 and 3000;
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+| eid | name    | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email             | gender | designation  |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+|   4 | poirei  |  35859877 | 1997-08-19 |   24 | 2004-05-10 | b+         |     30 |   1300 | poirei@gmail.com  | male   | tech_support |
+|   5 | anwar   | 977651142 | 1996-08-19 |   26 | 2005-05-10 | b+         |     40 |   5300 | anwar@gmail.com   | male   | manager      |
+|   7 | swadhin |  23657893 | 1998-02-28 |   22 | 2006-05-13 | ab+        |     50 |   6000 | swadhin@gmail.com | male   | developer    |
+|   9 | bonty   | 114886389 | 1995-11-14 |   29 | 2013-04-01 | a+         |     20 |   7000 | bonty@gmail.com   | male   | hr           |
+|  10 | rishali | 582784582 | 1995-10-10 |   19 | 2013-09-10 | b+         |     30 |   4000 | rishali@gmail.com | female | tech_support |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+5 rows in set (0.00 sec)
+
+============================IS OPERATOR ===========================
+==> (to check the null value )
+Syntax -> select * from Table_name where column_name is null
+
+===============================LIKE OPERATOR=================================
+
+Syntax-> select *  from TAble_name where column_name like '%/_ _';
+
+Q) WAQ to display all the details of employee whose name starts with A?
+Ans:-
+ select * from employee
+    -> where name like 'a%';
++-----+-------+-----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+| eid | name  | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email           | gender | designation |
++-----+-------+-----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+|   5 | anwar | 977651142 | 1996-08-19 |   26 | 2005-05-10 | b+         |     40 |   5300 | anwar@gmail.com | male   | manager     |
++-----+-------+-----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+1 row in set (0.00 sec)
+
+Q) WAQ to display name of the employee whose 2nd character is I?
+Ans:-
+select name from employee
+    -> where name like '_I%';
++---------+
+| name    |
++---------+
+| rishali |
++---------+
+1 row in set (0.00 s)
+
+Q)  WAQ to display the name of employee which has atleast 2I in their name?
+Ans:-
+ select name from employee
+  -> where name like '%i%i%';
++---------+
+| name    |
++---------+
+| poirei  |
+| rishali |
++---------+
+
+Q) WAQ to display the name of employee whose name starts with p and end with i?
+Ans:-
+select * from employee
+    -> where name like 'p%i';
++-----+--------+-----------+------------+------+------------+------------+--------+--------+------------------+--------+--------------+
+| eid | name   | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email            | gender | designation  |
++-----+--------+-----------+------------+------+------------+------------+--------+--------+------------------+--------+--------------+
+|   4 | poirei |  35859877 | 1997-08-19 |   24 | 2004-05-10 | b+         |     30 |   1300 | poirei@gmail.com | male   | tech_support |
+|   8 | prachi | 213457689 | 1995-12-16 |   32 | 2006-01-13 | b+         |     10 |   3000 | prachi@gmail.com | female | testing      |
++-----+--------+-----------+------------+------+------------+------------+--------+--------+------------------+--------+--------------+
+
+Q) WAQ to display all the record of employee if the employee name begins with a or s?
+Ans:-
+select * from employee
+    -> where name like 'p%i';
++-----+--------+-----------+------------+------+------------+------------+--------+--------+------------------+--------+--------------+
+| eid | name   | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email            | gender | designation  |
++-----+--------+-----------+------------+------+------------+------------+--------+--------+------------------+--------+--------------+
+|   4 | poirei |  35859877 | 1997-08-19 |   24 | 2004-05-10 | b+         |     30 |   1300 | poirei@gmail.com | male   | tech_support |
+|   8 | prachi | 213457689 | 1995-12-16 |   32 | 2006-01-13 | b+         |     10 |   3000 | prachi@gmail.com | female | testing      |
++-----+--------+-----------+------------+------+------------+------------+--------+--------+------------------+--------+--------------+
+
+Q) WAQ to display employee name sal who is working in deptNo 10,20,30 and designation starts with d?
+Ans:-
+ select name,salary from employee
+    -> where deptNo in(10,20,30) and designation like 'd%';
++-------+--------+
+| name  | salary |
++-------+--------+
+| rehan |   2200 |
++-------+--------+
+1 row in set (0.00 sec)
+
+
+
+================================FUNCTIONS=======================================
+
+1)single row function (Scaler Function)
+2)Multi row function (Aggregate function)
+ 
+Q) select sum(salary) from employee;
++-------------+
+| sum(salary) |
++-------------+
+|       33100 |
++-------------+
+1 row in set (0.03 s
+
+select max(salary) from employee;
++-------------+
+| max(salary) |
++-------------+
+|        7000 |
++-------------+
+1 row in set (0.05 sec)
+
+mysql> select min(salary) from employee;
++-------------+
+| min(salary) |
++-------------+
+|        1300 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(salary) from employee;
++-------------+
+| avg(salary) |
++-------------+
+|   3677.7778 |
++-------------+
+1 row in set (0.00 sec)
+
+
+===========================ORDER BY CLAUSE ==================================
+
+Syntax -> select * from employee
+         where condition
+         order by column_name asc;-> should be written in last /execute at last
+
+
+Q)WAQ to display all the result of the employee and salary should be in desc order?
+Ans:-
+select * from employee
+-> order by salary;
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+| eid | name    | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email             | gender | designation  |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+|   4 | poirei  |  35859877 | 1997-08-19 |   24 | 2004-05-10 | b+         |     30 |   1300 | poirei@gmail.com  | male   | tech_support |
+|   6 | swati   |  79564787 | 1998-02-28 |   25 | 2006-05-13 | o+         |     40 |   2000 | swati@gmail.com   | female | clerk        |
+|   1 | rehan   |  76810823 | 1998-09-28 |   21 | 2002-05-05 | a+         |     10 |   2200 | rehan@gmail.com   | male   | developer    |
+|   2 | priya   | 687457677 | 1997-09-18 |   23 | 2003-05-08 | a+         |     20 |   2300 | priya@gmail.com   | female | testing      |
+|   8 | prachi  | 213457689 | 1995-12-16 |   32 | 2006-01-13 | b+         |     10 |   3000 | prachi@gmail.com  | female | testing      |
+|  10 | rishali | 582784582 | 1995-10-10 |   19 | 2013-09-10 | b+         |     30 |   4000 | rishali@gmail.com | female | tech_support |
+|   5 | anwar   | 977651142 | 1996-08-19 |   26 | 2005-05-10 | b+         |     40 |   5300 | anwar@gmail.com   | male   | manager      |
+|   7 | swadhin |  23657893 | 1998-02-28 |   22 | 2006-05-13 | ab+        |     50 |   6000 | swadhin@gmail.com | male   | developer    |
+|   9 | bonty   | 114886389 | 1995-11-14 |   29 | 2013-04-01 | a+         |     20 |   7000 | bonty@gmail.com   | male   | hr           |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+9 rows in set (0.03 sec)
+
+
+========================SUB-QUERYS===========================
+
+ ->Query inside a query is called sub-query
+
+ 
+
+

@@ -1,0 +1,57 @@
+<form action="" class="col-md-4 offset-4 mt-5 card card-body mb-5" #form="ngForm" (ngSubmit)="dataForm(form)">
+    <h1 class="text-center bg-dark text-white">User Form</h1>
+    <div class="form-group">
+        <input type="text" name="UName" id="UName" class="form-control" placeholder="Enter User Name...." #UName="ngModel" ngModel required>
+        <div *ngIf = "UName.touched && UName.invalid">
+          <p *ngIf="UName.errors.required">Requird Field</p>
+      </div>
+    </div>
+    <div class="form-control">
+        <input type="text" name="Upage" id="Upage" class="form-group" placeholder="Enter" #Upage="ngModel" ngModel required>
+        <div *ngIf = "Upage.touched && Upage.invalid">
+          <p *ngIf="Upage.errors.required">Requird Field</p>
+      </div>
+    </div>
+    <h4 class="float-left bg-dark text-white mt-2">Gender</h4>
+    <div class="form-group">
+            <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox1">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">Female</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                    <label class="form-check-label" for="inlineCheckbox3">Others</label>
+                </div>
+                 <div class="form-group">
+                        <input type="text" name="UEmail" id="UEmail" class="form-control" placeholder="Enter email....." #UEmail="ngModel" ngModel required>
+                        <div *ngIf="UEmail.touched && UEmail.invalid">
+                          <p *ngIf="UEmail.errors.required">required field</p>
+                        </div>
+                 </div>
+                 <div class="form-group">
+                        <input type="text" name="UContact" id="UContact" class="form-control" placeholder="Enter Contact Number...." #UContact="ngModel" ngModel required>
+                        <div *ngIf="UContact.touched && UContact.invalid">
+                          <p *ngIf="UContact.errors.required">required field</p>
+                        </div>
+                 </div>
+                 <div class="form-group">
+                        <input type="text" name="Password" id="Password" class="form-control" placeholder="Enter Password...." #Password ="ngModel" ngModel required>
+                        <div *ngIf="Password.touched && Password.invalid">
+                          <p *ngIf="Password.errors.required">Required Field</p>
+                        </div>
+                 </div>
+                 <div class="form-group">
+                    <input type="text" name="RPassword" id="RPassword" class="form-control" placeholder="Re-enter Password...." #RPassword ="ngModel" ngModel required>
+                    <div *ngIf="RPassword.touched && RPassword.invalid">
+                      <p *ngIf="RPassword.errors.required">Required field</p>
+                    </div>
+             </div>
+    </div>
+    <div class="form-group">
+            <button type="submit" class="btn btn-outline-success float-right" [disabled]="form.invalid">Address</button>
+    </div>
+</form>

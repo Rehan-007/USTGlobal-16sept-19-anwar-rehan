@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    background-image: url(/image/blue-blur-color-932638.jpg);
+    height: 400px;
+    width: 1220px;
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+}
+ul{
+    float: left;
+    list-style: none;
+    margin-top: .5px;
+    background: transparent;
+}
+ul li {
+    display: inline-block;
+    padding: 15px;
+    margin: 1px;
+    margin-top: 1px;
+}
+ul li a{
+      text-decoration: none;
+      color: white;
+        
+}
+ul li.active a {
+    background-color: transparent;
+    border-radius: 1px solid white;
+    border-radius: 4px;
+    padding: 5px;
+}
+.main{
+    max-width: 1200px;
+    margin: auto;
+}
+.logo{
+    float: left;
+    height: auto;
+    color: white;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+.title{
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.title h1{
+    color: white;
+    font-size: 25px;
+}
+.title h4 {
+    color: white;
+    font-size: 12px;
+}
+
+.right {
+    float: right;
+}
+.search input{.search h6{
+    color: white;
+    top: 34%;
+    left: 50%;
+    height: 300px;
+}
+    position: absolute;
+    top: 34%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 550px;
+    height: 30px;
+    border-radius: 5px;
+}
+img{
+    width: 250px;
+    height: 300px;
+    padding: 40px;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+.right ul li .active a{
+    border-radius: 1px solid white;
+}
+figure{
+        width: 200px;
+        height: 200px;
+        border : 1px solid black;
+        padding: 0px;
+        margin-top: 10px;
+        margin-left: 0px;
+}

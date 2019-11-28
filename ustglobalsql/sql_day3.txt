@@ -1,0 +1,163 @@
+Q) WAQ to display all the record of employee whose date of joining is same as rehan?
+Ans:-
+select * from employee
+    -> where doj =(select doj from employee
+    ->      where name = 'rehan');
++-----+-------+----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+| eid | name  | mobileNo | dob        | age  | doj        | bloodGroup | deptNo | salary | email           | gender | designation |
++-----+-------+----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+|   1 | rehan | 76810823 | 1998-09-28 |   21 | 2002-05-05 | a+         |     10 |   2200 | rehan@gmail.com | male   | developer   |
++-----+-------+----------+------------+------+------------+------------+--------+--------+-----------------+--------+-------------+
+1 row in set (0.04 sec)
+
+Q)WAQ to display the 2nd max sal?
+Ans:-
+     select max(salary) from employee
+    -> where salary < (select max(salary) from employee);
++-------------+
+| max(salary) |
++-------------+
+|        6000 |
++-------------+
+
+==============================MULTI ROW SUB-QUERIES===========================
+
+Syntax -> select * from table_name where column_name (operator) (select from table_name)
+
+
+Q) WAQ to display name of the employee who is working in location which has atleast 1 A?
+Ans:-
+ select * from employee
+    -> where deptNo in ( select deptNo from dept
+    -> where location like '%a%');
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+| eid | name    | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email             | gender | designation  |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+|   1 | rehan   |  76810823 | 1998-09-28 |   21 | 2002-05-05 | a+         |     10 |   2200 | rehan@gmail.com   | male   | developer    |
+|   4 | poirei  |  35859877 | 1997-08-19 |   24 | 2004-05-10 | b+         |     30 |   1300 | poirei@gmail.com  | male   | tech_support |
+|   8 | prachi  | 213457689 | 1995-12-16 |   32 | 2006-01-13 | b+         |     10 |   3000 | prachi@gmail.com  | female | testing      |
+|  10 | rishali | 582784582 | 1995-10-10 |   19 | 2013-09-10 | b+         |     30 |   4000 | rishali@gmail.com | female | tech_support |
++-----+---------+-----------+------------+------+------------+------------+--------+--------+-------------------+--------+--------------+
+4 rows in set (0.0admin 4 sec)
+
+Q) WAQ to display all the record of the employee who is working in  admin operator and developer?
+Ans:-
+select * from employee
+    -> where deptNo in (select deptNo from dept
+    -> where dname in('admin','operator','developer'));
++-----+--------+-----------+------------+------+------------+------------+--------+--------+------------------+--------+-------------+
+| eid | name   | mobileNo  | dob        | age  | doj        | bloodGroup | deptNo | salary | email            | gender | designation |
++-----+--------+-----------+------------+------+------------+------------+--------+--------+------------------+--------+-------------+
+|   1 | rehan  |  76810823 | 1998-09-28 |   21 | 2002-05-05 | a+         |     10 |   2200 | rehan@gmail.com  | male   | developer   |
+|   8 | prachi | 213457689 | 1995-12-16 |   32 | 2006-01-13 | b+         |     10 |   3000 | prachi@gmail.com | female | testing     |
++-----+--------+-----------+------------+------+------------+------------+--------+--------+------------------+--------+-------------+
+2 rows in set (0.00 sec)
+
+=======================Group By Clause=========================
+
+Q) WAQ to display the max salary for each dept?
+Ans:-
+select max(salary) from employee
+    -> group by deptNo;
++-------------+
+| max(salary) |
++-------------+
+|        3000 |
+|        7000 |
+|        4000 |
+|        5300 |
+|        6000 |
++-------------+
+5 rows in set (0.05 sec)
+
+Q)WAQ to display the higest salary given to hr in each dept?
+Ans:-
+ select max(salary) from employee
+    -> where designation ='hr'
+    -> group by deptNo;
++-------------+
+| max(salary) |
++-------------+
+|        7000 |
++-------------+
+1 row in set (0.00 sec)
+
+Q) WAQ to display  deptNo which has atleast two employee working?
+Ans:-
+select deptNo from employee
+ -> group by deptNo
+ -> having count(*)=2;
++--------+
+| deptNo |
++--------+
+|     10 |
+|     20 |
+|     30 |
+|     40 |
++--------+
+4 rows in set (0.00 sec)
+
+===>For auto_commit to be false==>set autocommit=0;
+
+=======================JOINS=====================================
+
+> Cross joins/cartesian--> records from 1st table will be merged with all the records of 2nd table;
+> syntax -> select * from table_name join table_name2;//ANSI
+------------INNER JOINS------------
+> inner join is used to obtain only matching records from tables
+>select * from employee e inner  join dept d on e.deptNo=d.deptNo;/ANSI
+
+-----------------------OUTER JOIN---------------------------
+>left outer join-->returns all the data from left side and matched data from right side(combination of inner join and unmached record present in the left table)
+  -Syntax-> select * from employee ,dept where t1.column_name=t2.column_name;
+
+ >right outer join
+ >full outer join --> it obtains all the unmatched record from the table
+
+----------------------NATURAL JOIN-------------------
+-natural join is similar to inner join where we dnt specify the condition
+-natural join provides output if there is common column else it returns cartesian join output
+-->joining of two same table is known as self jooin ,we use this join whenever data to be select is in same table but it should be in two diffrent record.
+-->Syntax->select * from table t join  table t2on condition;
+
+
+=========================KEY ATTRIBUTES===========================
+
+
+-->key Attributes-->the attribute with the help of which we can identify the record uniquely.
+--> all the attribute except key attribute is called non-key attribute.
+-->prime-Key--> among the key attributes an attribute choosen to identify the record uniquely in the table.
+-->composite key-->the combination of two or key attributes which is use to identify a record uniquely is called composite key.
+
+-->foreign key-->
+ -->the set of all the key attributev is called super key attribute
+
+
+
+=========================Functional Dependency===========================
+
+--> a relation which exists such that attributes determine another attribute uniquely is called function dependency.
+-->   R->{X,Y}.
+3 types--> 1) total
+           2) partial
+           3) transitive
+1) if all the attributes of a relation determined by a key  attribute is called total functional dependency.
+2) a relation is said to have partial  functional dependency if .it consist a composite key attribute
+                                                                 > there exsits a dependency an attribute can be determined by other attribute which is part of composite key attribute.
+
+3) a relation is said to have a transitive functional dependency if there exists a 
+
+
+=============================NORMALISATION ===================
+
+NF->a state of table without redundency and anomly is called as normal form
+-->1st-NF-->a table is said to be in 1st normal form if it satisfys the condition
+                                                       >A table should not have duplicate record
+                                                       > every cell in the table should be a single value (atomic value)
+                                                       
+2nd-NF--> a table should be in 2nd NF if it satisfy the following condition
+            >it should satisfy the 1st NF
+             > table should not contain partial dependency function
+3rd-NF -->should satisfy the 2nd NF
+          > it should not have transitive functional dependency
+BCNF -->   
